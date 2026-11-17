@@ -1,0 +1,170 @@
+[
+ {
+  "variant": "specific description",
+  "run": 1,
+  "listed_as": "release-notes: Writes release notes from the git history: groups the commits since a tag into features, fixes and other changes, and writes RELEASE_NOTES.md. Use when the user asks for release notes, a changelog entry or a summary of changes since a version.",
+  "skill_tool_called": true,
+  "notes_written": true,
+  "cost_usd": 0.0861
+ },
+ {
+  "variant": "specific description",
+  "run": 2,
+  "listed_as": "release-notes: Writes release notes from the git history: groups the commits since a tag into features, fixes and other changes, and writes RELEASE_NOTES.md. Use when the user asks for release notes, a changelog entry or a summary of changes since a version.",
+  "skill_tool_called": true,
+  "notes_written": true,
+  "cost_usd": 0.0854
+ },
+ {
+  "variant": "specific description",
+  "run": 3,
+  "listed_as": "release-notes: Writes release notes from the git history: groups the commits since a tag into features, fixes and other changes, and writes RELEASE_NOTES.md. Use when the user asks for release notes, a changelog entry or a summary of changes since a version.",
+  "skill_tool_called": true,
+  "notes_written": true,
+  "cost_usd": 0.0856
+ },
+ {
+  "variant": "unclosed quote",
+  "run": 1,
+  "listed_as": "release-notes: \"Writes release notes from the git history: groups the commits since a tag into features, fixes and other changes, and writes RELEASE_NOTES.md. Use when the user asks for release notes, a changelog entry or a summary of changes since a version.",
+  "skill_tool_called": true,
+  "notes_written": true,
+  "cost_usd": 0.0858
+ },
+ {
+  "variant": "unclosed quote",
+  "run": 2,
+  "listed_as": "release-notes: \"Writes release notes from the git history: groups the commits since a tag into features, fixes and other changes, and writes RELEASE_NOTES.md. Use when the user asks for release notes, a changelog entry or a summary of changes since a version.",
+  "skill_tool_called": true,
+  "notes_written": true,
+  "cost_usd": 0.0862
+ },
+ {
+  "variant": "unclosed quote",
+  "run": 3,
+  "listed_as": "release-notes: \"Writes release notes from the git history: groups the commits since a tag into features, fixes and other changes, and writes RELEASE_NOTES.md. Use when the user asks for release notes, a changelog entry or a summary of changes since a version.",
+  "skill_tool_called": true,
+  "notes_written": true,
+  "cost_usd": 0.0861
+ },
+ {
+  "variant": "vague description",
+  "run": 1,
+  "listed_as": "release-notes: Helps with project documentation.",
+  "skill_tool_called": true,
+  "notes_written": true,
+  "cost_usd": 0.0857
+ },
+ {
+  "variant": "vague description",
+  "run": 2,
+  "listed_as": "release-notes: Helps with project documentation.",
+  "skill_tool_called": true,
+  "notes_written": true,
+  "cost_usd": 0.0856
+ },
+ {
+  "variant": "vague description",
+  "run": 3,
+  "listed_as": "release-notes: Helps with project documentation.",
+  "skill_tool_called": true,
+  "notes_written": true,
+  "cost_usd": 0.0858
+ },
+ {
+  "variant": "in .agents/skills",
+  "run": 1,
+  "listed_as": "",
+  "skill_tool_called": false,
+  "notes_written": true,
+  "cost_usd": 0.1133
+ },
+ {
+  "variant": "in .agents/skills",
+  "run": 2,
+  "listed_as": "",
+  "skill_tool_called": false,
+  "notes_written": true,
+  "cost_usd": 0.1027
+ },
+ {
+  "variant": "in .agents/skills",
+  "run": 3,
+  "listed_as": "",
+  "skill_tool_called": false,
+  "notes_written": true,
+  "cost_usd": 0.1071
+ },
+ {
+  "variant": "name helper, vague description",
+  "run": 1,
+  "listed_as": "helper: Helps with project documentation.",
+  "skill_tool_called": false,
+  "notes_written": false,
+  "cost_usd": 0.0995
+ },
+ {
+  "variant": "name helper, vague description",
+  "run": 2,
+  "listed_as": "helper: Helps with project documentation.",
+  "skill_tool_called": false,
+  "notes_written": false,
+  "cost_usd": 0.0861
+ },
+ {
+  "variant": "name helper, vague description",
+  "run": 3,
+  "listed_as": "helper: Helps with project documentation.",
+  "skill_tool_called": false,
+  "notes_written": false,
+  "cost_usd": 0.0939
+ },
+ {
+  "variant": "name helper, specific description",
+  "run": 1,
+  "listed_as": "helper: Writes release notes from the git history: groups the commits since a tag into features, fixes and other changes, and writes RELEASE_NOTES.md. Use when the user asks for release notes, a changelog entry or a summary of changes since a version.",
+  "skill_tool_called": true,
+  "notes_written": true,
+  "cost_usd": 0.0862
+ },
+ {
+  "variant": "name helper, specific description",
+  "run": 2,
+  "listed_as": "helper: Writes release notes from the git history: groups the commits since a tag into features, fixes and other changes, and writes RELEASE_NOTES.md. Use when the user asks for release notes, a changelog entry or a summary of changes since a version.",
+  "skill_tool_called": true,
+  "notes_written": true,
+  "cost_usd": 0.0864
+ },
+ {
+  "variant": "name helper, specific description",
+  "run": 3,
+  "listed_as": "helper: Writes release notes from the git history: groups the commits since a tag into features, fixes and other changes, and writes RELEASE_NOTES.md. Use when the user asks for release notes, a changelog entry or a summary of changes since a version.",
+  "skill_tool_called": true,
+  "notes_written": true,
+  "cost_usd": 0.0862
+ },
+ {
+  "variant": "name helper, front matter dropped",
+  "run": 1,
+  "listed_as": "helper: Helper",
+  "skill_tool_called": false,
+  "notes_written": false,
+  "cost_usd": 0.0831
+ },
+ {
+  "variant": "name helper, front matter dropped",
+  "run": 2,
+  "listed_as": "helper: Helper",
+  "skill_tool_called": false,
+  "notes_written": false,
+  "cost_usd": 0.0805
+ },
+ {
+  "variant": "name helper, front matter dropped",
+  "run": 3,
+  "listed_as": "helper: Helper",
+  "skill_tool_called": false,
+  "notes_written": false,
+  "cost_usd": 0.0852
+ }
+]
