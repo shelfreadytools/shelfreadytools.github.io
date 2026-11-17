@@ -1,0 +1,66 @@
+Claude Code: 2.1.325 (Claude Code)
+Prompt: Write release notes for everything since v1.0.
+Sessions: 3 per variant
+
+## The four variants (front matter)
+
+### specific description: .claude/skills/release-notes/SKILL.md
+---
+name: release-notes
+description: "Writes release notes from the git history: groups the commits since a tag into features, fixes and other changes, and writes RELEASE_NOTES.md. Use when the user asks for release notes, a changelog entry or a summary of changes since a version."
+---
+# Release notes
+
+### unclosed quote: .claude/skills/release-notes/SKILL.md
+---
+name: release-notes
+description: "Writes release notes from the git history: groups the commits since a tag into features, fixes and other changes, and writes RELEASE_NOTES.md. Use when the user asks for release notes, a changelog entry or a summary of changes since a version.
+---
+# Release notes
+
+### vague description: .claude/skills/release-notes/SKILL.md
+---
+name: release-notes
+description: Helps with project documentation.
+---
+# Release notes
+
+### in .agents/skills: .agents/skills/release-notes/SKILL.md
+---
+name: release-notes
+description: "Writes release notes from the git history: groups the commits since a tag into features, fixes and other changes, and writes RELEASE_NOTES.md. Use when the user asks for release notes, a changelog entry or a summary of changes since a version."
+---
+# Release notes
+
+### name helper, vague description: .claude/skills/helper/SKILL.md
+---
+name: helper
+description: Helps with project documentation.
+---
+# Helper
+
+### name helper, specific description: .claude/skills/helper/SKILL.md
+---
+name: helper
+description: "Writes release notes from the git history: groups the commits since a tag into features, fixes and other changes, and writes RELEASE_NOTES.md. Use when the user asks for release notes, a changelog entry or a summary of changes since a version."
+---
+# Helper
+
+### name helper, front matter dropped: .claude/skills/helper/SKILL.md
+---
+name: helper
+description: "Writes release notes from the git history, groups the commits since a tag into features, fixes and other changes, and writes RELEASE_NOTES.md. Use when the user asks for release notes, a changelog entry or a summary of changes since a version.
+---
+# Helper
+
+## Results
+
+- specific description: Skill tool called in 3 of 3 sessions; RELEASE_NOTES.md written in 3; Claude saw: release-notes: Writes release notes from the git history: groups the commits since a tag into features, fixes and other changes, and writes RELEASE_NOTES.md. Use when the user asks for release notes, a changelog entry or a summary of changes since a version.
+- unclosed quote: Skill tool called in 3 of 3 sessions; RELEASE_NOTES.md written in 3; Claude saw: release-notes: "Writes release notes from the git history: groups the commits since a tag into features, fixes and other changes, and writes RELEASE_NOTES.md. Use when the user asks for release notes, a changelog entry or a summary of changes since a version.
+- vague description: Skill tool called in 3 of 3 sessions; RELEASE_NOTES.md written in 3; Claude saw: release-notes: Helps with project documentation.
+- in .agents/skills: Skill tool called in 0 of 3 sessions; RELEASE_NOTES.md written in 3; Claude saw: (not in the listing)
+- name helper, vague description: Skill tool called in 0 of 3 sessions; RELEASE_NOTES.md written in 0; Claude saw: helper: Helps with project documentation.
+- name helper, specific description: Skill tool called in 3 of 3 sessions; RELEASE_NOTES.md written in 3; Claude saw: helper: Writes release notes from the git history: groups the commits since a tag into features, fixes and other changes, and writes RELEASE_NOTES.md. Use when the user asks for release notes, a changelog entry or a summary of changes since a version.
+- name helper, front matter dropped: Skill tool called in 0 of 3 sessions; RELEASE_NOTES.md written in 0; Claude saw: helper: Helper
+
+Total cost: $1.88

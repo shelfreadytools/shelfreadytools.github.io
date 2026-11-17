@@ -1,0 +1,8 @@
+1. No README and no LICENSE (the directory refuses a submission without them).
+2. A .DS_Store at the top (the directory refuses it).
+3. The skill's description has an unquoted ": ", which YAML parsers refuse (Claude Code reads it).
+4. The skill's name (weather-note) differs from its folder (weather-notes).
+5. SKILL.md links references/Units.md; the file is references/units.md.
+6. The script imports requests, which nothing declares.
+7. An example path under /Users/sam/.
+8. A .zip inside the skill (the directory holds archives for a reviewer).

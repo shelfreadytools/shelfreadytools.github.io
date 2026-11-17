@@ -1,0 +1,70 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>$ARGUMENTS, $0 and $1 in Claude Code skills: what each one becomes</title><meta name="description" content="Eight real runs on Claude Code 2.1.325: which placeholders a skill&#x27;s arguments replace, which stay as literal text, and how a price like $5 in a skill turns into the sixth argument."><meta property="og:title" content="$ARGUMENTS, $0 and $1 in Claude Code skills: what each one becomes"><link rel="canonical" href="https://shelfreadytools.github.io/guides/skill-arguments/"><meta property="og:url" content="https://shelfreadytools.github.io/guides/skill-arguments/"><meta property="og:type" content="article"><meta property="og:site_name" content="Shelf Ready Tools"><meta property="og:description" content="Eight real runs on Claude Code 2.1.325: which placeholders a skill&#x27;s arguments replace, which stay as literal text, and how a price like $5 in a skill turns into the sixth argument."><script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "$ARGUMENTS, $0 and $1 in Claude Code skills: what each one becomes", "description": "Eight real runs on Claude Code 2.1.325: which placeholders a skill's arguments replace, which stay as literal text, and how a price like $5 in a skill turns into the sixth argument.", "url": "https://shelfreadytools.github.io/guides/skill-arguments/", "author": {"@type": "Organization", "name": "Shelf Ready Tools", "url": "https://shelfreadytools.github.io/"}, "publisher": {"@type": "Organization", "name": "Shelf Ready Tools", "url": "https://shelfreadytools.github.io/"}, "datePublished": "2026-11-16", "dateModified": "2026-11-16"}</script><style>
+:root{--bg:#fbfaf7;--fg:#1d1d1b;--muted:#5f5e58;--line:#e3e1d9;--code:#f2f1eb;--accent:#2f6f4f}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#17181a;--fg:#ecebe6;--muted:#a7a59c;
+--line:#34363a;--code:#24262a;--accent:#7fc8a0}}
+:root[data-theme=dark]{--bg:#17181a;--fg:#ecebe6;--muted:#a7a59c;--line:#34363a;--code:#24262a;--accent:#7fc8a0}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,
+Helvetica,Arial,sans-serif}
+main{max-width:780px;margin:0 auto;padding:40px 16px 80px}
+h1{font-size:2rem;line-height:1.2;margin:0 0 .4rem}
+h2{font-size:1.35rem;margin:2.4rem 0 .6rem;padding-top:.4rem;border-top:1px solid var(--line)}
+h3{font-size:1.1rem;margin:1.6rem 0 .4rem}
+p,ul,ol{margin:0 0 1rem} li{margin:.25rem 0}
+a{color:var(--accent)}
+.lede{font-size:1.15rem;color:var(--muted);margin-bottom:1.6rem}
+code,pre{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.88em}
+:not(pre)>code{background:var(--code);padding:.1em .35em;border-radius:4px;overflow-wrap:anywhere}
+pre{background:var(--code);padding:12px 14px;border-radius:8px;overflow-x:auto;line-height:1.45}
+.table{overflow-x:auto;margin:0 0 1rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem}
+th,td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:8px}
+blockquote{margin:0 0 1rem;padding-left:14px;border-left:3px solid var(--line);color:var(--muted)}
+footer{margin-top:3rem;color:var(--muted);font-size:.9rem}
+</style></head><body><main><h1 id="arguments-0-and-1-in-claude-code-skills-what-each-one-becomes"><code>$ARGUMENTS</code>, <code>$0</code> and <code>$1</code> in Claude Code skills: what each one becomes</h1><p class="lede">Eight real runs on Claude Code 2.1.325: which placeholders a skill&#x27;s arguments replace, which stay as literal text, and how a price like $5 in a skill turns into the sixth argument.</p>
+<p>A skill sees its arguments through placeholders in <code>SKILL.md</code>. Most surprises come from three rules: indexes start at 0, a placeholder with no argument stays in the text as it is written, and any <code>$</code> followed by a number counts as a placeholder, prices included.</p>
+<p>Everything below comes from eight short sessions on Claude Code 2.1.325 (16 November 2026), each started with <code>claude -p</code> in a fresh project. The text shown is what Claude received: it is read from the session's own transcript, not from Claude's reply. The skills and the full transcripts are linked at the end.</p>
+<h2 id="the-test-skill">The test skill</h2>
+<pre><code>---
+name: echo-args
+description: Test skill that shows the text it received. Use only when asked to use echo-args.
+---
+
+Reply with only the word OK.
+
+all: [$ARGUMENTS]
+zero: [$0]
+one: [$1]
+two: [$2]
+first again: [$ARGUMENTS[0]]
+price: [it costs $5 a month]
+escaped price: [it costs \$5 a month]</code></pre>
+<h2 id="what-each-placeholder-became">What each placeholder became</h2>
+<div class="table"><table><thead><tr><th>In <code>SKILL.md</code></th><th><code>/echo-args</code></th><th><code>/echo-args alpha beta</code></th><th><code>/echo-args a b c d e f</code></th></tr></thead><tbody><tr><td><code>$ARGUMENTS</code></td><td>(empty)</td><td><code>alpha beta</code></td><td><code>a b c d e f</code></td></tr><tr><td><code>$0</code></td><td><code>$0</code></td><td><code>alpha</code></td><td><code>a</code></td></tr><tr><td><code>$1</code></td><td><code>$1</code></td><td><code>beta</code></td><td><code>b</code></td></tr><tr><td><code>$2</code></td><td><code>$2</code></td><td><code>$2</code></td><td><code>c</code></td></tr><tr><td><code>$ARGUMENTS[0]</code></td><td><code>$ARGUMENTS[0]</code></td><td><code>alpha</code></td><td><code>a</code></td></tr><tr><td><code>it costs $5 a month</code></td><td>unchanged</td><td>unchanged</td><td><strong><code>it costs f a month</code></strong></td></tr><tr><td><code>it costs \$5 a month</code></td><td><code>it costs $5 a month</code></td><td><code>it costs $5 a month</code></td><td><code>it costs $5 a month</code></td></tr></tbody></table></div>
+<p>Four things to take from it:</p>
+<ol><li><strong>Indexes start at 0.</strong> <code>$0</code> is the first argument and <code>$1</code> the second. <code>$ARGUMENTS[N]</code> is the same thing written out.</li><li><strong>A missing argument leaves the placeholder in the text.</strong> With no arguments, Claude was given the literal characters <code>$0</code> and <code>$1</code>; with two, the literal <code>$2</code>. Only <code>$ARGUMENTS</code> becomes empty.</li><li><strong>A price is a placeholder.</strong> <code>$5</code> waits for a sixth argument. With five or fewer it stays <code>$5</code>, so the skill looks fine every time you try it with one or two arguments, and then someone passes six and Claude reads "it costs f a month". Write <code>\$5</code>: Claude Code removes the backslash and shows <code>$5</code>, however many arguments there are.</li><li><strong><code>$ARGUMENTS</code> keeps quotes; <code>$0</code> and <code>$1</code> do not.</strong> <code>/echo-args &quot;two words&quot; third</code> gave <code>$0</code> = <code>two words</code>, <code>$1</code> = <code>third</code> and <code>$ARGUMENTS</code> = <code>&quot;two words&quot; third</code>.</li></ol>
+<h2 id="four-more-cases">Four more cases</h2>
+<p><strong>An argument that contains a placeholder is not expanded again.</strong> <code>/echo-args $1 beta</code> gave <code>$0</code> = <code>$1</code>: the text the user typed, inserted as it is.</p>
+<p><strong>Named arguments become empty when missing.</strong> With <code>arguments: [city, unit]</code> in the front matter, <code>/named-args Lisbon</code> gave:</p>
+<pre><code>city: [Lisbon]
+unit: []
+all: [Lisbon]</code></pre>
+<p>So <code>$unit</code> and <code>$1</code> behave differently: a missing named argument becomes empty, a missing <code>$1</code> stays <code>$1</code>. Named arguments are the safer choice for optional values.</p>
+<p><strong>No placeholder at all: the arguments are added at the end.</strong> A skill with no placeholders, run as <code>/no-placeholders alpha beta</code>, was given its text followed by a new last line:</p>
+<pre><code>This skill has no placeholders.
+ARGUMENTS: alpha beta</code></pre>
+<p><strong>When Claude calls the skill itself, the same rules apply.</strong> Asked in plain words to use echo-args with the arguments alpha beta, Claude called the Skill tool with <code>{&quot;skill&quot;: &quot;echo-args&quot;, &quot;args&quot;: &quot;alpha beta&quot;}</code>, and the text it received was the same as for <code>/echo-args alpha beta</code>.</p>
+<p>These match Claude Code's <a href="https://code.claude.com/docs/en/skills">skills documentation</a>, which also covers <code>argument-hint</code> for autocomplete. Not tested here: skills that run with <code>context: fork</code>.</p>
+<h2 id="writing-a-skill-that-takes-arguments">Writing a skill that takes arguments</h2>
+<ul><li>Escape every <code>$</code> that is followed by a digit in the skill's text: <code>\$5</code>, <code>\$1.00</code>.</li><li>Use named arguments (<code>arguments: [file, format]</code>) for anything optional, so a missing value is empty rather than a stray <code>$1</code>; or say in the skill what to do when no argument was given.</li><li>If the skill needs every word the user typed, use <code>$ARGUMENTS</code>; for separate values, tell users to quote values with spaces.</li><li>Try it with no arguments and with more than you expect, not only with the usual one or two.</li></ul>
+<p>The free <a href="../../check/">Shelf Ready Check</a> flags a <code>$</code> followed by a number in a skill's text. On the test skill (shortened):</p>
+<pre><code>**1 findings:** 0 high, 1 medium, 0 low, 0 info.
+
+- SR219 SKILL.md:13: 1 &#x27;$&lt;number&gt;&#x27; in the text ($5 (line 13)): Claude Code replaces $N with argument N when
+  the skill is called with more than N arguments (Claude Code)
+  - Fix: write \$5 for a literal dollar sign (Claude Code shows it as $5)</code></pre>
+<p>The placeholders inside brackets are not flagged; the price is.</p>
+<h2 id="the-full-transcripts">The full transcripts</h2>
+<p>The test project was a temporary folder, shown as <code>&lt;project&gt;</code>. Skills: <a href="runs/skill-echo-args.md">echo-args</a> · <a href="runs/skill-named-args.md">named-args</a> · <a href="runs/skill-no-placeholders.md">no-placeholders</a>. Sessions: <a href="runs/01-two-args.txt">two arguments</a> · <a href="runs/02-no-args.txt">none</a> · <a href="runs/03-quoted.txt">quoted</a> · <a href="runs/04-six-args.txt">six</a> · <a href="runs/05-dollar-in-argument.txt"><code>$1</code> as an argument</a> · <a href="runs/06-named-one-missing.txt">named, one missing</a> · <a href="runs/07-no-placeholders.txt">no placeholders</a> · <a href="runs/08-claude-invokes.txt">Claude invokes it</a> · <a href="runs/check-echo-args.txt">the check</a> · <a href="runs/versions.txt">version</a>. The eight sessions cost $0.36 together.</p>
+<p>Shelf Ready, the paid kit from the same author, runs your skill once in a fresh Claude Code session the way a buyer installs it and reports what happened: whether the skill was used, the permission prompts, failures and cost. <a href="../../">Shelf Ready</a>.</p><footer>Shelf Ready Tools · shelfreadytools.github.io</footer></main><script data-goatcounter="https://shelfreadytools.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script></body></html>

@@ -1,0 +1,5 @@
+$ claude plugin validate <plugin>/skills
+Validating components in: <plugin>/skills
+
+✔ Validation passed
+[exit code 0]

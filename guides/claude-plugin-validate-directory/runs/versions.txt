@@ -1,0 +1,2 @@
+2.1.325 (Claude Code)
+shelf-ready-check 0.1.4

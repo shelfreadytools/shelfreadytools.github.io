@@ -1,0 +1,28 @@
+$ claude -p "Use the echo-args skill with the arguments alpha beta. Then reply with only the word OK."
+
+--- you ---
+Use the echo-args skill with the arguments alpha beta. Then reply with only the word OK.
+
+--- Claude calls the Skill tool ---
+{"skill": "echo-args", "args": "alpha beta"}
+
+--- tool result ---
+Launching skill: echo-args
+
+--- skill content as Claude received it ---
+Base directory for this skill: <project>/.claude/skills/echo-args
+
+Reply with only the word OK.
+
+all: [alpha beta]
+zero: [alpha]
+one: [beta]
+two: [$2]
+first again: [alpha]
+price: [it costs $5 a month]
+escaped price: [it costs $5 a month]
+
+--- Claude ---
+OK
+
+[cost $0.0493]

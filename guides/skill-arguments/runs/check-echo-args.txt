@@ -1,0 +1,16 @@
+$ python3 shelf-ready-check/skills/check-skill/scripts/shelf_ready_check.py check echo-args
+# shelfready check: echo-args (skill)
+
+Checked: `echo-args`
+
+Targets: Claude Code, other agents (Agent Skills spec).
+
+**1 findings:** 0 high, 1 medium, 0 low, 0 info.
+
+## Medium (1)
+
+- **SR219** `SKILL.md:13`: 1 '$<number>' in the text ($5 (line 13)): Claude Code replaces $N with argument N when the skill is called with more than N arguments (Claude Code)
+  - Why: Claude Code docs; seen in a real session: '$5' became the sixth argument
+  - Fix: write \$5 for a literal dollar sign (Claude Code shows it as $5)
+
+[exit code 0]

@@ -1,0 +1,66 @@
+Claude Code: 2.1.325 (Claude Code)
+
+## The SKILL.md files (folder: first lines)
+
+### .claude/skills/fm-ok/SKILL.md
+---
+name: fm-ok
+description: "Writes meeting notes: who came, what was decided. Use for meeting notes."
+---
+
+### .claude/skills/fm-colon/SKILL.md
+---
+name: fm-colon
+description: Writes meeting notes: who came, what was decided. Use for meeting notes.
+---
+
+### .claude/skills/fm-unclosed-quote/SKILL.md
+---
+name: fm-unclosed-quote
+description: "Writes meeting notes, who came and what was decided.
+---
+
+### .claude/skills/fm-tab/SKILL.md
+---
+name: fm-tab
+	description: Writes meeting notes, who came and what was decided.
+---
+
+### .claude/skills/fm-list-item/SKILL.md
+---
+name: fm-list-item
+description:
+- Writes meeting notes
+  who came
+---
+
+### .claude/skills/fm-name-colon/SKILL.md
+---
+name: fm: name-colon
+description: Writes meeting notes, who came and what was decided.
+---
+
+### .claude/skills/fm-no-description/SKILL.md
+---
+name: fm-no-description
+---
+
+### .claude/skills/fm-missing/SKILL.md
+# Meeting notes
+
+Writes meeting notes, who came and what was decided.
+
+## Skills in the session's init event
+fm-colon, fm-name-colon, fm-ok
+
+## The skill listing Claude received (these skills only)
+- fm-colon: Writes meeting notes: who came, what was decided. Use for meeting notes.
+- fm-list-item: Notes
+- fm-missing: Meeting notes
+- fm-name-colon: Writes meeting notes, who came and what was decided.
+- fm-no-description: Notes
+- fm-ok: Writes meeting notes: who came, what was decided. Use for meeting notes.
+- fm-tab: Notes
+- fm-unclosed-quote: Notes
+
+[cost $0.0574]

@@ -1,0 +1,20 @@
+$ claude -p "/named-args Lisbon"
+
+--- you ---
+<command-message>named-args</command-message>
+<command-name>/named-args</command-name>
+<command-args>Lisbon</command-args>
+
+--- skill content as Claude received it ---
+Base directory for this skill: <project>/.claude/skills/named-args
+
+Reply with only the word OK.
+
+city: [Lisbon]
+unit: []
+all: [Lisbon]
+
+--- Claude ---
+OK
+
+[cost $0.0426]

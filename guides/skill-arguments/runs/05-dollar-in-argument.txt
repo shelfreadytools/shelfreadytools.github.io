@@ -1,0 +1,24 @@
+$ claude -p "/echo-args $1 beta"
+
+--- you ---
+<command-message>echo-args</command-message>
+<command-name>/echo-args</command-name>
+<command-args>$1 beta</command-args>
+
+--- skill content as Claude received it ---
+Base directory for this skill: <project>/.claude/skills/echo-args
+
+Reply with only the word OK.
+
+all: [$1 beta]
+zero: [$1]
+one: [beta]
+two: [$2]
+first again: [$1]
+price: [it costs $5 a month]
+escaped price: [it costs $5 a month]
+
+--- Claude ---
+OK
+
+[cost $0.0430]

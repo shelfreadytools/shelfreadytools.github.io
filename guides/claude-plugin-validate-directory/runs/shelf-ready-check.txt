@@ -1,0 +1,66 @@
+$ python3 shelf-ready-check/skills/check-skill/scripts/shelf_ready_check.py check <plugin>
+# shelfready check: weather-notes-plugin (plugin)
+
+Checked: `weather-notes-plugin`
+
+**6 findings:** 3 high, 2 medium, 1 low, 0 info.
+
+## High (3)
+
+- **SR102** `skills/weather-notes/SKILL.md:3`: the front matter is not valid YAML: an unquoted value contains ': ', which YAML reads as a new key; put the value in quotes (other agents (Agent Skills spec))
+  - Why: Agent Skills spec: front matter is YAML, and YAML parsers stop here ('mapping values are not allowed here'); Claude Code 2.1.325 still read this line in a real session
+  - Fix: put the value in quotes
+- **SR212** `skills/weather-notes/SKILL.md:12`: machine-specific path /Users/sam/
+  - Why: it fails on every other computer and shows your user name
+  - Fix: use a relative path, ~, or ${CLAUDE_SKILL_DIR}
+- **SR210** `skills/weather-notes/SKILL.md:13`: references/Units.md is referenced, but the file is references/units.md: the names differ only in case
+  - Why: macOS and Windows ignore the difference; Linux, CI and the API's container do not
+  - Fix: write references/units.md, or rename the file
+
+## Medium (2)
+
+- **SR116** `skills/weather-notes/SKILL.md:2`: the name 'weather-note' differs from the folder name 'weather-notes' (other agents (Agent Skills spec)) (read line by line, since the front matter does not parse)
+  - Why: Agent Skills spec: the name must match the parent directory; Claude Code uses `name` and ignores the folder name
+  - Fix: rename the folder or the name so they match
+- **SR305** `skills/weather-notes/scripts/fetch.py:3`: imports 'requests', which is not in Python's standard library; the docs never mention it
+  - Why: Anthropic's authoring best practices: list required packages; buyers' agents fail on a missing module
+  - Fix: say in SKILL.md that it needs `pip install requests` (or add requirements.txt)
+
+## Low (1)
+
+- **SR414** `.claude-plugin/plugin.json:1`: no plugin icon
+  - Why: claude plugin validate's plugin-directory checks (seen 2026-11-11); the first icon saved becomes the listing icon and cannot be changed
+  - Fix: add a square PNG, 512-2048 px a side and under 2 MB, at .claude-plugin/icon.png
+
+## claude plugin validate
+
+Failed.
+
+```
+$ claude plugin validate --profile directory weather-notes-plugin
+Validating plugin manifest: weather-notes-plugin/.claude-plugin/plugin.json
+
+Plugin directory checks for weather-notes-plugin. The plugin directory is the catalog that plugins are submitted to; this is a subset of what it runs.
+
+✘ Found 2 problems the plugin directory refuses a submission for:
+
+  ❯ README.md: README missing (README_MISSING). This plugin has no README.md. People who install it and the directory's automated review read the README to learn what it does; the first line of a README in the plugin folder also stands in as the listing summary when plugin.json has no description.
+    Fix: Add a README.md to the plugin folder describing what the plugin does, how to use it, and any setup it needs, in at least 40 words. A README at the repository root also counts for a plugin in a sub-folder.
+  ❯ LICENSE: License missing (LICENSE_MISSING). This plugin has no LICENSE file and plugin.json has no `license`. The directory requires one of them.
+    Fix: Add a LICENSE file to the plugin folder, or set `license` (an SPDX id) in plugin.json. A LICENSE at the repository root also counts for a plugin in a sub-folder.
+
+⚠ Found 2 plugin directory warnings:
+
+  ❯ .claude-plugin/plugin.json icon: No icon (ICON_MISSING). No icon found in the plugin. The validator looked for `icon` in plugin.json and for a file at .claude-plugin/icon.png or .svg, assets/icon.png or .svg, or a similar path.
+    Fix: Add a square PNG to the plugin folder at .claude-plugin/icon.png, or set `icon` in plugin.json to the path of a square PNG or JPEG in the plugin: 512 to 2048 px on each side, under 2 MB. SVG and WebP are not accepted. That file may become the listing icon only once: the first time the plugin is saved or submitted in the developer portal. Adding or changing it later does not change the icon.
+  ❯ .DS_Store: macOS or Windows system file in the plugin (ARCHIVE_OS_METADATA_FILE). This is a macOS or Windows system file (.DS_Store, Thumbs.db, desktop.ini, or anything under __MACOSX), not part of your plugin. The directory cannot scan or list a plugin that contains one. Remove it from the repository (git rm --cached the file, commit and push, and add the name to .gitignore), then validate again.
+
+About these checks:
+
+  ❯ System files: this command reads the folder on disk. A plugin submitted from a git repository holds only what is committed there. For each file a finding names, run `git ls-files <file>`. If it prints nothing, the file is not committed and so is not submitted with the plugin; add its name to .gitignore. If it prints the file, remove it as the finding says. In CI, run --profile directory --strict on a fresh checkout; --strict also fails on the directory's other warnings.
+
+The directory also runs a safety scan and a policy review that this command does not.
+
+✘ Validation failed (--profile directory: the plugin directory would refuse a submission of this plugin)
+```
+[exit code 1]

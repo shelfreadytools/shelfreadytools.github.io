@@ -1,0 +1,21 @@
+$ claude -p "/no-placeholders alpha beta"
+
+--- you ---
+<command-message>no-placeholders</command-message>
+<command-name>/no-placeholders</command-name>
+<command-args>alpha beta</command-args>
+
+--- skill content as Claude received it ---
+Base directory for this skill: <project>/.claude/skills/no-placeholders
+
+Reply with only the word OK.
+
+This skill has no placeholders.
+
+
+ARGUMENTS: alpha beta
+
+--- Claude ---
+OK
+
+[cost $0.0427]

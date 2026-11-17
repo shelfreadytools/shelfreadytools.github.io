@@ -1,0 +1,22 @@
+$ python3 shelf-ready-check/skills/check-skill/scripts/shelf_ready_check.py check helper
+# shelfready check: helper (skill)
+
+Checked: `helper`
+
+Targets: Claude Code, other agents (Agent Skills spec).
+
+**3 findings:** 0 high, 0 medium, 3 low, 0 info.
+
+## Low (3)
+
+- **SR124** `SKILL.md:3`: the description may not say when to use the skill (no phrase such as "use when" was found)
+  - Why: Agent Skills spec; Anthropic's authoring best practices: say what it does and when to use it
+  - Fix: add a sentence such as "Use when the user asks to ..." with the words people type
+- **SR125** `SKILL.md:3`: the description is only 33 characters, too little to trigger reliably
+  - Why: Anthropic's authoring best practices
+  - Fix: name the task, the inputs and the words users type
+- **SR210** `SKILL.md:10`: RELEASE_NOTES.md is referenced but not in the skill
+  - Why: Agent Skills spec: bundled files are referenced by relative path
+  - Fix: add the file or fix the path
+
+[exit code 0]
